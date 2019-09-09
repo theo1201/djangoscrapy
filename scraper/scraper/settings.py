@@ -9,8 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 import sys
-sys.path.append('/Users/mac/Desktop/python/djangoscrapy')
 import os
+# sys.path.append('/Users/mac/Desktop/python/djangoscrapy')
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 这里获取项目的绝对路径
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = BASE_DIR[:BASE_DIR.find("djangoscrapy\\")+len("djangoscrapy\\")] 
+
+sys.path.append(BASE_DIR)
 os.environ['DJANGO_SETTINGS_MODULE'] = 'djangoscrapy.settings'
 
 # Starting with Django 1.8 you also have to explicitly set up Django
