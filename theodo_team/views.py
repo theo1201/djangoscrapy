@@ -14,3 +14,12 @@ class TheodoTeamViewSet(viewsets.ModelViewSet):
     """
     queryset = TheodoTeam.objects.all()
     serializer_class = TheodoTeamSerializer
+
+
+def ScrapydData(request):
+    from scrapyd_api import ScrapydAPI
+    scrapyd = ScrapydAPI('http://localhost:6800')
+    settings = {'DOWNLOAD_DELAY': 2}
+    # 运行一个爬虫
+    scrapyd.schedule('project_name', 'spider_name', settings=settings)
+    print(scrapyd.list_projects())
